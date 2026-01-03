@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for('static', filename='favicon.svg') }}"
+    />
+
+    <!-- Tailwind CSS 4 Play CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <title>{% block title %}App Controle Financeiro{% endblock %}</title>
+
+    <style type="text/tailwindcss">
+      @theme {
+        --color-brand: #c9a050; /* Um tom dourado para o tema financeiro */
+      }
+    </style>
+  </head>
+  <body
+    class="flex flex-col min-h-full bg-zinc-900 text-zinc-100 antialiased font-sans"
+  >
+    {% include "header.html" %}
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="border-t border-zinc-800 bg-zinc-950 py-8">
+      <div class="max-w-7xl mx-auto px-4 text-center text-zinc-500 text-sm">
+        <p>&copy; 2026 App Controle Financeiro. Criado por Daniel Dias.</p>
+      </div>
+    </footer>
+  </body>
+</html>
