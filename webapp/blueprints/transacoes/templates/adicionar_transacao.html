@@ -1,0 +1,302 @@
+{% extends "base.html" %} {% block title %}Nova Transação{% endblock %} {% block
+content %}
+
+<div class="max-w-6xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <!-- Bloco da Esquerda: Formulário -->
+    <div class="w-full">
+      <!-- Título e Subtítulo -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-white tracking-tight">
+          Nova Transação
+        </h1>
+        <p class="text-zinc-400 mt-2">
+          Registre suas movimentações financeiras
+        </p>
+      </div>
+
+      <!-- Card do Formulário -->
+      <div
+        class="bg-zinc-800/40 backdrop-blur-xl border border-zinc-700/50 p-8 rounded-3xl shadow-2xl"
+      >
+        <form class="space-y-6">
+          <!-- Toggle Entrada/Saída (Segmented Control) -->
+          <div class="flex p-1 bg-zinc-900 rounded-xl border border-zinc-800">
+            <button
+              type="button"
+              id="button-entrada"
+              onclick="setType('entrada')"
+              class="flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-200 bg-emerald-500/10 text-emerald-500"
+            >
+              Entrada
+            </button>
+            <button
+              type="button"
+              id="button-saida"
+              onclick="setType('saida')"
+              class="flex-1 py-2 px-4 rounded-lg text-sm font-semibold transition-all duration-200 text-zinc-400 hover:text-white"
+            >
+              Saída
+            </button>
+          </div>
+          <input
+            type="hidden"
+            name="tipo"
+            id="tipo-transacao"
+            value="entrada"
+          />
+
+          <!-- Campo Descrição -->
+          <div class="space-y-2">
+            <label
+              for="descricao"
+              class="block text-sm font-medium text-zinc-300 ml-1"
+              >Descrição</label
+            >
+            <input
+              type="text"
+              id="descricao"
+              name="descricao"
+              placeholder="Ex: Salário, Aluguel..."
+              class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-all"
+            />
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Campo Categoria -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label
+                  for="categoria"
+                  class="block text-sm font-medium text-zinc-300 ml-1"
+                  >Categoria</label
+                >
+                <button
+                  type="button"
+                  class="bg-brand/10 rounded-xl text-zinc-400 hover:text-white hover:bg-brand/20 duration-200 px-2 py-1"
+                >
+                  Nova categoria
+                </button>
+              </div>
+              <select
+                id="categoria"
+                name="categoria"
+                class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-all appearance-none"
+              >
+                <option value="">Selecione</option>
+                <option value="alimentacao" class="bg-zinc-900">
+                  Alimentação
+                </option>
+                <option value="transporte" class="bg-zinc-900">
+                  Transporte
+                </option>
+                <option value="lazer" class="bg-zinc-900">Lazer</option>
+                <option value="trabalho" class="bg-zinc-900">Trabalho</option>
+              </select>
+            </div>
+
+            <!-- Campo Valor -->
+            <div class="space-y-2">
+              <label
+                for="valor"
+                class="block text-sm font-medium text-zinc-300 ml-1"
+                >Valor</label
+              >
+              <div class="relative">
+                <span class="absolute left-4 top-3 text-zinc-500 font-medium"
+                  >R$</span
+                >
+                <input
+                  type="number"
+                  id="valor"
+                  name="valor"
+                  step="0.01"
+                  placeholder="0,00"
+                  class="w-full bg-zinc-900 border border-zinc-700 rounded-xl pl-11 pr-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand/50 focus:border-brand transition-all"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão Adicionar -->
+          <button
+            type="submit"
+            id="btn-confirmar"
+            class="w-full bg-emerald-500 hover:bg-emerald-600 text-zinc-950 font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200 mt-4"
+          >
+            Confirmar Lançamento
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bloco da Direita: Transações Recentes -->
+    <div class="w-full">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white tracking-tight">
+          Recém Adicionadas
+        </h2>
+        <p class="text-zinc-400 mt-2">Suas últimas movimentações registradas</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Mock de Transações para Demonstração -->
+        <div
+          class="group bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/50 p-5 rounded-2xl flex justify-between items-center transition-all duration-300"
+        >
+          <div class="flex items-center gap-4">
+            <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-white">Salário Mensal</p>
+              <p class="text-sm text-zinc-500">Hoje, 09:45</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-emerald-500 font-bold text-lg"
+              >+ R$ 4.500,00</span
+            >
+            <p class="text-xs text-zinc-600 uppercase tracking-wider">
+              Trabalho
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="group bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/50 p-5 rounded-2xl flex justify-between items-center transition-all duration-300"
+        >
+          <div class="flex items-center gap-4">
+            <div class="p-3 bg-rose-500/10 rounded-xl text-rose-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20 12H4"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-white">Supermercado</p>
+              <p class="text-sm text-zinc-500">Hoje, 11:20</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-rose-500 font-bold text-lg">- R$ 342,50</span>
+            <p class="text-xs text-zinc-600 uppercase tracking-wider">
+              Alimentação
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="group bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/50 p-5 rounded-2xl flex justify-between items-center transition-all duration-300"
+        >
+          <div class="flex items-center gap-4">
+            <div class="p-3 bg-rose-500/10 rounded-xl text-rose-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20 12H4"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-white">Assinatura Netflix</p>
+              <p class="text-sm text-zinc-500">Ontem, 20:15</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="text-rose-500 font-bold text-lg">- R$ 55,90</span>
+            <p class="text-xs text-zinc-600 uppercase tracking-wider">Lazer</p>
+          </div>
+        </div>
+
+        <!-- Botão Ver Todas -->
+        <a
+          href="#"
+          class="block text-center py-3 text-zinc-500 hover:text-brand transition-colors text-sm font-medium"
+        >
+          Ver histórico completo
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Função para alternar entre entrada e saída
+  function setType(type) {
+    const btnEntrada = document.getElementById("button-entrada");
+    const btnSaida = document.getElementById("button-saida");
+    const btnConfirmar = document.getElementById("btn-confirmar");
+    const inputTipo = document.getElementById("tipo-transacao");
+
+    inputTipo.value = type;
+
+    if (type === "entrada") {
+      btnEntrada.classList.add("bg-emerald-500/10", "text-emerald-500");
+      btnEntrada.classList.remove("text-zinc-400", "hover:text-white");
+
+      btnSaida.classList.remove("bg-rose-500/10", "text-rose-500");
+      btnSaida.classList.add("text-zinc-400", "hover:text-white");
+
+      btnConfirmar.classList.remove(
+        "bg-rose-500",
+        "hover:bg-rose-600",
+        "shadow-rose-500/20"
+      );
+      btnConfirmar.classList.add(
+        "bg-emerald-500",
+        "hover:bg-emerald-600",
+        "shadow-emerald-500/20"
+      );
+    } else {
+      btnSaida.classList.add("bg-rose-500/10", "text-rose-500");
+      btnSaida.classList.remove("text-zinc-400", "hover:text-white");
+
+      btnEntrada.classList.remove("bg-emerald-500/10", "text-emerald-500");
+      btnEntrada.classList.add("text-zinc-400", "hover:text-white");
+
+      btnConfirmar.classList.remove(
+        "bg-emerald-500",
+        "hover:bg-emerald-600",
+        "shadow-emerald-500/20"
+      );
+      btnConfirmar.classList.add(
+        "bg-rose-500",
+        "hover:bg-rose-600",
+        "shadow-rose-500/20"
+      );
+    }
+  }
+</script>
+{% endblock %}
