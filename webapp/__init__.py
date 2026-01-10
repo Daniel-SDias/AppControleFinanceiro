@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import os
+from os import path
 
 DB_NAME = "database.db"
 db = SQLAlchemy()
@@ -25,14 +25,14 @@ def create_app():
     app.register_blueprint(transacoes_bp, url_prefix="/")
 
     # Cria o banco de dados se não existir
-    # from .models import User, Transaction
-    # create_db(app)
+    from .models import Transaction
+    create_db(app)
 
     return app
 
 
 def create_db(app):
-    if not os.path.exists("webapp/" + DB_NAME):
+    if not path.exists("webapp/" + DB_NAME):
         with app.app_context():
             db.create_all()
         print("Banco de dados criado com sucesso!")
