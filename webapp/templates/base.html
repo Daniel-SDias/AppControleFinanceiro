@@ -18,6 +18,23 @@
       @theme {
         --color-brand: #c9a050; /* Um tom dourado para o tema financeiro */
       }
+
+      @layer utilities {
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out forwards;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     </style>
   </head>
   <body

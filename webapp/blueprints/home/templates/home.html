@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block content %}
+<div
+  class="relative min-h-[70vh] flex flex-col items-center justify-center text-center"
+>
+  <!-- Glow Effect Background -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand/10 blur-[120px] rounded-full pointer-events-none"
+  ></div>
+
+  <!-- Large Icon -->
+  <div class="mb-10 animate-fade-in">
+    <div
+      class="w-24 h-24 bg-brand rounded-2xl flex items-center justify-center shadow-2xl shadow-brand/20 transform hover:scale-110 transition-transform duration-300"
+    >
+      <span class="text-zinc-900 text-4xl font-bold">$</span>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-white mb-6">
+    Controle<span class="text-brand">Financeiro</span>
+  </h1>
+
+  <!-- Subtitle -->
+  <p
+    class="text-zinc-400 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed mb-12"
+  >
+    Gerencie suas finanças com a <span class="text-white">simplicidade</span> e
+    <span class="text-brand">elegância</span> que você merece.
+  </p>
+
+  <!-- CTA Buttons -->
+  <div class="flex flex-col sm:flex-row gap-4">
+    <a
+      href="{{ url_for('transacoes.movimentacoes') }}"
+      class="px-10 py-5 bg-brand text-zinc-900 font-bold rounded-2xl hover:bg-brand/90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand/10 flex items-center gap-2"
+    >
+      Ver Movimentações
+    </a>
+
+    <a
+      href="{{ url_for('transacoes.adicionar_transacao') }}"
+      class="px-10 py-5 bg-zinc-800 text-white font-bold rounded-2xl border border-zinc-700 hover:bg-zinc-700 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
+    >
+      Nova Transação
+    </a>
+  </div>
+</div>
+{% endblock %}
