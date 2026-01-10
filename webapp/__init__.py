@@ -17,12 +17,14 @@ def create_app():
     db.init_app(app)
 
     # Importa os blueprints
-    # from .blueprints.home import home_bp
+    from .blueprints.home import home_bp
     from .blueprints.transacoes import transacoes_bp
+    from .blueprints.dashboard import dashboard_bp
 
     # Registra os blueprints
-    # app.register_blueprint(home_bp, url_prefix="/")
+    app.register_blueprint(home_bp, url_prefix="/")
     app.register_blueprint(transacoes_bp, url_prefix="/")
+    app.register_blueprint(dashboard_bp, url_prefix="/")
 
     # Cria o banco de dados se não existir
     from .models import Transaction
