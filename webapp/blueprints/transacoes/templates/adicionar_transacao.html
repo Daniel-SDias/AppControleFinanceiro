@@ -144,60 +144,30 @@ content %}
       </div>
     </div>
 
-    <!-- Bloco da Direita: Transações Recentes -->
-    <div class="w-full">
+    <!-- Bloco da Direita: Movimentações -->
+    <div class="w-full h-full flex flex-col">
       <div class="mb-8">
         <h2 class="text-2xl font-bold text-white tracking-tight">
-          Recém Adicionadas
+          Movimentações
         </h2>
-        <p class="text-zinc-400 mt-2">Suas últimas movimentações registradas</p>
+        <p class="text-zinc-400 mt-2">Veja seus lançamentos recentes</p>
       </div>
 
-      <div class="space-y-4">
-        <!-- Mock de Transações para Demonstração -->
+      <!-- Card da Tabela Customizada -->
         <div
-          class="group bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/50 p-5 rounded-2xl flex justify-between items-center transition-all duration-300"
+        class="bg-zinc-800/40 backdrop-blur-xl border border-zinc-700/50 rounded-3xl overflow-hidden shadow-2xl flex-grow flex flex-col"
+      >
+        <!-- Toolbar da Tabela -->
+        <div
+          class="p-4 border-b border-zinc-700/50 flex items-center justify-between gap-4 bg-zinc-900/40"
         >
-          <div class="flex items-center gap-4">
-            <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 4v16m8-8H4"
-                />
-              </svg>
-            </div>
-            <div>
-              <p class="font-semibold text-white">Salário Mensal</p>
-              <p class="text-sm text-zinc-500">Hoje, 09:45</p>
-            </div>
-          </div>
-          <div class="text-right">
-            <span class="text-emerald-500 font-bold text-lg"
-              >+ R$ 4.500,00</span
+          <div class="relative flex-grow max-w-xs">
+            <span
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500"
             >
-            <p class="text-xs text-zinc-600 uppercase tracking-wider">
-              Trabalho
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="group bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/50 p-5 rounded-2xl flex justify-between items-center transition-all duration-300"
-        >
-          <div class="flex items-center gap-4">
-            <div class="p-3 bg-rose-500/10 rounded-xl text-rose-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-6 h-6"
+                class="w-4 h-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -206,31 +176,23 @@ content %}
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M20 12H4"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-            </div>
-            <div>
-              <p class="font-semibold text-white">Supermercado</p>
-              <p class="text-sm text-zinc-500">Hoje, 11:20</p>
-            </div>
+            </span>
+            <input
+              type="text"
+              placeholder="Pesquisar..."
+              class="w-full bg-zinc-900/50 border border-zinc-700/50 rounded-lg pl-9 pr-4 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-brand/50 transition-all"
+            />
           </div>
-          <div class="text-right">
-            <span class="text-rose-500 font-bold text-lg">- R$ 342,50</span>
-            <p class="text-xs text-zinc-600 uppercase tracking-wider">
-              Alimentação
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="group bg-zinc-800/30 hover:bg-zinc-800/50 border border-zinc-700/50 p-5 rounded-2xl flex justify-between items-center transition-all duration-300"
-        >
-          <div class="flex items-center gap-4">
-            <div class="p-3 bg-rose-500/10 rounded-xl text-rose-500">
+          <div class="flex gap-2">
+            <button
+              class="p-2 bg-zinc-900/50 border border-zinc-700/50 rounded-lg text-zinc-400 hover:text-white transition-colors"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-6 h-6"
+                class="w-4 h-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -239,28 +201,172 @@ content %}
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M20 12H4"
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
                 />
               </svg>
-            </div>
-            <div>
-              <p class="font-semibold text-white">Assinatura Netflix</p>
-              <p class="text-sm text-zinc-500">Ontem, 20:15</p>
-            </div>
-          </div>
-          <div class="text-right">
-            <span class="text-rose-500 font-bold text-lg">- R$ 55,90</span>
-            <p class="text-xs text-zinc-600 uppercase tracking-wider">Lazer</p>
+            </button>
           </div>
         </div>
 
-        <!-- Botão Ver Todas -->
-        <a
-          href="#"
-          class="block text-center py-3 text-zinc-500 hover:text-brand transition-colors text-sm font-medium"
+        <!-- Tabela -->
+        <div class="overflow-x-auto flex-grow">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-zinc-900/60">
+                <th
+                  class="px-6 py-4 text-xs font-semibold text-zinc-400 uppercase tracking-wider"
+                >
+                  Data
+                </th>
+                <th
+                  class="px-6 py-4 text-xs font-semibold text-zinc-400 uppercase tracking-wider"
+                >
+                  Descrição
+                </th>
+                <th
+                  class="px-6 py-4 text-xs font-semibold text-zinc-400 uppercase tracking-wider"
+                >
+                  Categoria
+                </th>
+                <th
+                  class="px-6 py-4 text-xs font-semibold text-zinc-400 uppercase tracking-wider text-right"
+                >
+                  Valor
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-700/50">
+              <!-- Item 1 -->
+              <tr class="group hover:bg-zinc-700/20 transition-colors">
+                <td class="px-6 py-4">
+                  <span class="text-sm text-zinc-300">Hoje</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex flex-col">
+                    <span class="text-sm font-medium text-white"
+                      >Salário Mensal</span
+                    >
+                    <span class="text-xs text-zinc-500"
+                      >Recebimento via PIX</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
+                  >
+                    Trabalho
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <span class="text-sm font-bold text-emerald-500"
+                    >+ R$ 4.500,00</span
+                  >
+                </td>
+              </tr>
+
+              <!-- Item 2 -->
+              <tr class="group hover:bg-zinc-700/20 transition-colors">
+                <td class="px-6 py-4">
+                  <span class="text-sm text-zinc-300">02 Jan</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex flex-col">
+                    <span class="text-sm font-medium text-white"
+                      >Supermercado</span
+                    >
+                    <span class="text-xs text-zinc-500">Compra semanal</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-500/10 text-rose-500 border border-rose-500/20"
+                  >
+                    Alimentação
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <span class="text-sm font-bold text-rose-500"
+                    >- R$ 342,50</span
+                  >
+                </td>
+              </tr>
+
+              <!-- Item 3 -->
+              <tr class="group hover:bg-zinc-700/20 transition-colors">
+                <td class="px-6 py-4">
+                  <span class="text-sm text-zinc-300">01 Jan</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex flex-col">
+                    <span class="text-sm font-medium text-white"
+                      >Netflix Premium</span
+                    >
+                    <span class="text-xs text-zinc-500">Plano Anual</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-zinc-500/10 text-zinc-400 border border-zinc-500/20"
+                  >
+                    Lazer
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <span class="text-sm font-bold text-rose-500"
+                    >- R$ 55,90</span
+                  >
+                </td>
+              </tr>
+
+              <!-- Item 4 (Mock) -->
+              <tr class="group hover:bg-zinc-700/20 transition-colors">
+                <td class="px-6 py-4">
+                  <span class="text-sm text-zinc-300">31 Dez</span>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex flex-col">
+                    <span class="text-sm font-medium text-white"
+                      >Posto Shell</span
+                    >
+                    <span class="text-xs text-zinc-500">Abastecimento</span>
+            </div>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-zinc-500/10 text-zinc-400 border border-zinc-500/20"
+                  >
+                    Transporte
+                  </span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <span class="text-sm font-bold text-rose-500"
+                    >- R$ 220,00</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+
+        <!-- Footer da Tabela / Paginação Mock -->
+        <div
+          class="p-4 border-t border-zinc-700/50 flex items-center justify-between text-xs text-zinc-500 bg-zinc-900/40"
         >
-          Ver histórico completo
-        </a>
+          <span>Mostrando 4 de 12 lançamentos</span>
+          <div class="flex gap-1">
+            <button
+              class="px-2 py-1 rounded border border-zinc-700/50 hover:bg-zinc-700/50 disabled:opacity-50"
+            >
+              Anterior
+            </button>
+            <button
+              class="px-2 py-1 rounded border border-zinc-700/50 hover:bg-zinc-700/50"
+            >
+              Próximo
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
