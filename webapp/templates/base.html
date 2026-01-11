@@ -40,11 +40,11 @@
   <body
     class="flex flex-col min-h-full bg-zinc-900 text-zinc-100 antialiased font-sans"
   >
-    {% include "header.html" %}
-
+    {% include "header.html" %} {% block main_container %}
     <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {% block content %}{% endblock %}
     </main>
+    {% endblock %}
 
     <footer class="border-t border-zinc-800 bg-zinc-950 py-8">
       <div class="max-w-7xl mx-auto px-4 text-center text-zinc-500 text-sm">
