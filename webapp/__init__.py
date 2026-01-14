@@ -23,8 +23,8 @@ def create_app():
 
     # Registra os blueprints
     app.register_blueprint(home_bp, url_prefix="/")
-    app.register_blueprint(transacoes_bp, url_prefix="/")
-    app.register_blueprint(dashboard_bp, url_prefix="/")
+    app.register_blueprint(transacoes_bp, url_prefix="/transacoes")
+    app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
 
     # Cria o banco de dados se não existir
     from .models import Transaction
