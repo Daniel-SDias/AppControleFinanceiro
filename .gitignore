@@ -8,6 +8,7 @@ __pycache__/
 # Ambiente virtual
 # ========================
 .venv/
+.uv-cache/
 venv/
 env/
 
@@ -67,6 +68,6 @@ dist/
 Thumbs.db
 
 # ========================
-# uv
+# Webapp
 # ========================
-uv.lock
+blueprint_modelo/

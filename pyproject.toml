@@ -13,8 +13,5 @@ dependencies = [
     "flask-login (>=0.6.3,<0.7.0)",
     "python-dotenv (>=1.2.1,<2.0.0)"
 ]
-
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+[tool.uv]
+package = false
