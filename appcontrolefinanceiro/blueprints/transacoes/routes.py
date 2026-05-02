@@ -3,7 +3,7 @@ from datetime import datetime
 from flask import render_template, request, jsonify
 
 from . import transacoes_bp
-from webapp.models import Transaction, Category
+from appcontrolefinanceiro.models import Transaction, Category
 
 
 @transacoes_bp.route("/adicionar_transacao", methods=["GET"])
